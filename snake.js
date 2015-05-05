@@ -6,7 +6,7 @@ $(document).ready(function(){
   var h = $("#canvas").height();
 
   //Lets save the cell width in a variable for easy control
-  var cw = 40;
+  var cw = 25;
   var d;
   var food;
   var score;
@@ -26,7 +26,7 @@ $(document).ready(function(){
     //every 60ms
     if(typeof game_loop != "undefined") clearInterval(game_loop);
     // debugger
-    game_loop = setInterval(paint, 100-1*Math.floor(score/3));
+    game_loop = setInterval(paint, 100);
   }
   init();
 
@@ -118,7 +118,9 @@ $(document).ready(function(){
     paint_cell(food.x, food.y);
     //Lets paint the score
     var score_text = "Score: " + score;
-    ctx.fillText(score_text, 20, h-50);
+    ctx.font = '20px Georgia black'
+    ctx.fillStyle='black'
+    ctx.fillText(score_text, 20, h-30);
   }
 
   //Lets first create a generic function to paint cells
@@ -157,3 +159,8 @@ $(document).ready(function(){
   })
 
 })
+window.addEventListener("keydown", function(e) {
+    if([13,37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);

@@ -1,0 +1,23 @@
+/** {
+  border: 1px red dotted;
+}*/
+body {
+  margin: auto;
+  text-align: center;
+  background-image: url("https://secure.gravatar.com/avatar/6f29143f2dea169fb9d16865d395e38d.png?r=PG&amp;d=mm&amp;s=98");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hide {
+  display: none;
+}
+
+h1 {
+  font-family: 'Asap';
+  font-size: 50px;
+  color: #585858
+}
+
+canvas {
+}
