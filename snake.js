@@ -21,11 +21,12 @@ $(document).ready(function(){
     create_food(); //Now we can see the food particle
     //finally lets display the score
     score = 0;
+    speed = 100;
     //Lets move the snake now using a timer which will trigger the paint function
     //every 60ms
     if(typeof game_loop != "undefined") clearInterval(game_loop);
     // debugger
-    game_loop = setInterval(paint, 100);
+    game_loop = setInterval(paint, speed);
   }
   init();
 
@@ -64,6 +65,7 @@ $(document).ready(function(){
     //The movement code for the snake to come here.
     //The logic is simple
     //Pop out the tail cell and place it infront of the head cell
+
     var nx = snake_array[0].x;
     var ny  = snake_array[0].y;
     //These were the position of the head cell.
@@ -94,6 +96,7 @@ $(document).ready(function(){
     {
       var tail = {x: nx, y: ny};
       score++;
+      speed = 100 - 10*Math.floor(score/3)
       //Create new food
       create_food();
     }
@@ -109,7 +112,7 @@ $(document).ready(function(){
     for(var i = 0; i < snake_array.length; i++)
     {
       var c = snake_array[i];
-      //Lets paint 10px wide cells
+      //Lets paint 25px wide cells
       paint_cell(c.x, c.y);
     }
 
@@ -125,7 +128,7 @@ $(document).ready(function(){
   //Lets first create a generic function to paint cells
   function paint_cell(x, y)
   {
-    var img = document.getElementById("lamp")
+    var img = document.getElementById("dan")
     var pat = ctx.createPattern(img, 'repeat');
     ctx.fillStyle = pat;
     ctx.fillRect(x*cw, y*cw, cw, cw);
@@ -145,7 +148,7 @@ $(document).ready(function(){
     return false;
   }
 
-  //Lets add the keyboard controls now
+  Lets add the keyboard controls now
   $(document).keydown(function(e){
     e.preventDefault()
     var key = e.which;
@@ -156,7 +159,16 @@ $(document).ready(function(){
     else if(key == "40" && d != "up") d = "down";
     //The snake is now keyboard controllable
   })
-
+  // $(document).keydown(function(e){
+  //   e.preventDefault()
+  //   var key = e.which;
+  //   //We will add another clause to prevent reverse gear
+  //   if(key == "37") d = "left";
+  //   else if(key == "38") d = "up";
+  //   else if(key == "39") d = "right";
+  //   else if(key == "40") d = "down";
+  //   //The snake is now keyboard controllable
+  // })
 })
 window.addEventListener("keydown", function(e) {
     if([13,37, 38, 39, 40].indexOf(e.keyCode) > -1) {
