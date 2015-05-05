@@ -21,7 +21,6 @@ $(document).ready(function(){
     create_food(); //Now we can see the food particle
     //finally lets display the score
     score = 0;
-
     //Lets move the snake now using a timer which will trigger the paint function
     //every 60ms
     if(typeof game_loop != "undefined") clearInterval(game_loop);
@@ -57,7 +56,7 @@ $(document).ready(function(){
   {
     //To avoid the snake trail we need to paint the BG on every frame
     //Lets paint the canvas now
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#99ff66";
     ctx.fillRect(0, 0, w, h);
     ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, w, h);
